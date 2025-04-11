@@ -45,7 +45,7 @@ class VoiceAssistant:
         output_file = os.path.join(output_dir, "response.wav")
         self.tts.synthesize(response, output_file)
         print(f"Response saved to: {output_file}")
-        self.audio.play(output_file)
+        #self.audio.play(output_file)
 
 def main():
     parser = argparse.ArgumentParser(description='Voice Assistant')
