@@ -9,7 +9,7 @@
 1. 安装依赖:
 ```bash
 sudo apt update
-sudo apt install python3 python3-pip -y
+sudo apt install python3 python3-pip portaudio19-dev python3-pyaudio -y
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source $HOME/.cargo/env
