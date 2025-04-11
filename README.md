@@ -8,6 +8,12 @@
 
 1. 安装依赖:
 ```bash
+sudo apt update
+sudo apt install python3 python3-pip -y
+
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source $HOME/.cargo/env
+
 pip install -r requirements.txt
 ```
 
@@ -49,6 +55,6 @@ src/
 ## 支持的功能
 
 - 语音识别 (fast-whisper)
-- 自然语言处理 (Ollama Qwen)
+- 自然语言处理 (Ollama Qwen2.5)
 - 语音合成 (espeak-ng)
 - 实时录音对话
