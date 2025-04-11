@@ -28,6 +28,8 @@ brew install espeak-ng
 
 3. 安装并运行 Ollama:
 ```bash
+
+curl -fsSL https://ollama.com/install.sh | sh
 ollama pull qwen2.5:0.5b
 ```
 
