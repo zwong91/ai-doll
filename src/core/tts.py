@@ -1,7 +1,7 @@
 import subprocess
 
 class TextToSpeech:
-    def __init__(self, voice="zh"):
+    def __init__(self, voice="zh+f5"):
         self.voice = voice
 
     def synthesize(self, text, output_file):
