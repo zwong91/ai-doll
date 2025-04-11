@@ -9,7 +9,16 @@
 1. 安装依赖:
 ```bash
 sudo apt update
-sudo apt install python3 python3-pip portaudio19-dev python3-pyaudio -y
+sudo apt install python3 python3-pip -y
+apt install libsox-dev espeak-ng ffmpeg libopenblas-dev vim git-lfs -y
+
+# (Ubuntu / Debian User) Install pyaudio
+apt install build-essential \
+    cmake \
+    libasound-dev \
+    portaudio19-dev \
+    libportaudio2 \
+    libportaudiocpp0 -y
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source $HOME/.cargo/env

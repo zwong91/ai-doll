@@ -12,7 +12,7 @@ class Config:
     
     # LLM配置
     llm_url: str = "http://localhost:11434/api/generate"
-    llm_model: str = "qwen:0.5b"
+    llm_model: str = "qwen2.5:0.5b"
     
     # 音频配置
     sample_rate: int = 16000
