@@ -4,7 +4,7 @@ class TextToSpeech:
     def __init__(self, 
                  voice="zh+f5",
                  speed=130,    # 语速
-                 pitch=55,     # 音高
+                 pitch=45,     # 音高
                  volume=150,   # 音量
                  word_gap=3):  # 单词间隙
         self.voice = voice
