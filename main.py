@@ -5,7 +5,7 @@ from src.core.stt import SpeechToText
 from src.core.tts import TextToSpeech
 from src.core.llm import LLMClient
 from src.utils.audio import AudioHandler
-from src.config import Config
+from src.config.config import Config
 
 class VoiceAssistant:
     def __init__(self, config: Config):
