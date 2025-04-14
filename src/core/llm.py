@@ -4,7 +4,7 @@ class LLMClient:
     def __init__(self, 
                  url: str = "http://localhost:11434/api/generate", 
                  model: str = "qwen2.5:0.5b",
-                 num_predict: int = 128):
+                 num_predict: int = 64):
         self.url = url
         self.model = model
         self.num_predict = num_predict
