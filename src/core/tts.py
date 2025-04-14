@@ -1,27 +1,46 @@
 import subprocess
+import os
 
 class TextToSpeech:
     def __init__(self, 
+                 backend="piper",  # 'espeak' 或 'piper'
                  voice="zh+f5",
-                 speed=130,    # 语速
-                 pitch=45,     # 音高
-                 volume=150,   # 音量
-                 word_gap=3):  # 单词间隙
+                 speed=130,    
+                 pitch=45,     
+                 volume=150,   
+                 word_gap=3,
+                 piper_model="zh-CN-baker"):
+        self.backend = backend
         self.voice = voice
         self.speed = speed
         self.pitch = pitch
         self.volume = volume
         self.word_gap = word_gap
+        self.piper_model = piper_model
 
     def synthesize(self, text, output_file):
         """将文本转换为语音"""
+        if self.backend == "espeak":
+            self._synthesize_espeak(text, output_file)
+        else:
+            self._synthesize_piper(text, output_file)
+
+    def _synthesize_espeak(self, text, output_file):
         subprocess.run([
             "espeak-ng",
-            "-v", self.voice,   # 声音
-            "-s", str(self.speed),    # 语速
-            "-p", str(self.pitch),    # 音高
-            "-a", str(self.volume),   # 音量
-            "-g", str(self.word_gap), # 单词间隙
+            "-v", self.voice,
+            "-s", str(self.speed),
+            "-p", str(self.pitch),
+            "-a", str(self.volume),
+            "-g", str(self.word_gap),
             "-w", output_file,
             text
         ])
+
+    def _synthesize_piper(self, text, output_file):
+        process = subprocess.Popen(
+            ["piper", "--model", self.piper_model, "--output_file", output_file],
+            stdin=subprocess.PIPE,
+            text=True
+        )
+        process.communicate(input=text)
