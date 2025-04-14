@@ -1,6 +1,7 @@
 import argparse
 import tempfile
 import os
+import time
 from src.core.stt import SpeechToText
 from src.core.tts import TextToSpeech
 from src.core.llm import LLMClient
@@ -35,15 +36,32 @@ class VoiceAssistant:
 
     def process_audio_file(self, audio_file_path):
         """处理音频文件"""
+        start_time = time.time()
+        
+        # STT耗时
+        stt_start = time.time()
         text = self.stt.transcribe(audio_file_path)
-        print(f"Audio content: {text}")
+        stt_time = time.time() - stt_start
+        print(f"语音识别耗时: {stt_time:.2f}秒")
+        print(f"识别结果: {text}")
 
+        # LLM耗时
+        llm_start = time.time()
         response = self.llm.get_response(text)
-        print(f"AI response: {response}")
+        llm_time = time.time() - llm_start
+        print(f"LLM响应耗时: {llm_time:.2f}秒")
+        print(f"AI回复: {response}")
 
+        # TTS耗时
+        tts_start = time.time()
         output_dir = os.path.dirname(audio_file_path)
         output_file = os.path.join(output_dir, "response.wav")
         self.tts.synthesize(response, output_file)
+        tts_time = time.time() - tts_start
+        print(f"语音合成耗时: {tts_time:.2f}秒")
+        
+        total_time = time.time() - start_time
+        print(f"\n总计耗时: {total_time:.2f}秒")
         print(f"Response saved to: {output_file}")
         #self.audio.play(output_file)
 
