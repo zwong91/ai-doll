@@ -3,9 +3,9 @@ import os
 
 class TextToSpeech:
     def __init__(self, 
-                 backend="piper",  # 'espeak' 或 'piper'
+                 backend="espeak",  # 'espeak' 或 'piper'
                  voice="zh+f5",
-                 speed=130,    
+                 speed=150,    
                  pitch=45,     
                  volume=150,   
                  word_gap=3,
