@@ -9,7 +9,7 @@ class TextToSpeech:
                  pitch=45,     
                  volume=150,   
                  word_gap=3,
-                 piper_model="zh-CN-baker"):
+                 piper_model="zh-CN-huayan-medium.onnx"):
         self.backend = backend
         self.voice = voice
         self.speed = speed
